@@ -132,14 +132,17 @@ const HomePage = () => {
         <p className="text-xl text-gray-600 mb-6">
           Unleash the power of your entrepreneurial spirit!
         </p>
-        <p className="text-2xl italic text-gray-700 mb-8">
+        <p className="text-lg text-gray-600 mb-6 mx-auto max-w-5xl">
+        Validate groundbreaking ideas, discover your ideal co-founder, participate in exciting hackathons and ideathons, pitch your vision directly to investors, and access exclusive funding opportunities to fuel your startup’s growth.
+        </p>
+        <p className="text-2xl italic text-gray-700 mb-10">
           "Ideate. Build. Grow."
         </p>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
         {features.map((feature, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow">
+          <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader className="flex-col items-center gap-2">
               <feature.icon className="text-green-500 w-12 h-12" />
               <CardTitle className="text-black">{feature.title}</CardTitle>
@@ -152,10 +155,13 @@ const HomePage = () => {
       </section>
       {/* Horizontal Scrolling Section */}
       <section className="my-10">
-        <div className="overflow-hidden relative bg-slate-300 py-6">
-          <div className="flex">
+        <div className="overflow-hidden flex relative bg-slate-100">
+          <div className="bg-gray-200 z-10 px-10 py-6 text-lg text-black font-bold">
+            Startup <div className="text-green-500">Grow Us</div>
+          </div>
+          <div className="">
             {/* First set of logos (images) with faster animation */}
-            <span className="flex animate-scroll-fast gap-10">
+            <span className="flex animate-scroll-fast gap-10 pt-8">
               <img
                 src="https://vectorseek.com/wp-content/uploads/2023/10/Mamaearth-Logo-Vector.svg-.png"
                 alt="MamaEarth"
@@ -195,7 +201,7 @@ const HomePage = () => {
       <style jsx>{`
         @keyframes scroll-fast {
           0% {
-            transform: translateX(135%);
+            transform: translateX(125%);
           }
           100% {
             transform: translateX(
@@ -205,7 +211,7 @@ const HomePage = () => {
         }
 
         .animate-scroll-fast {
-          animation: scroll-fast 15s linear infinite;
+          animation: scroll-fast 30s linear infinite;
         }
       `}</style>
     </div>
