@@ -4,6 +4,8 @@ import HomePage from "./HomePage";
 import StartupShowcase from "./StartupShowcase";
 import FindCoFounder from "./FindCoFounder";
 import InvestorConnects from "./InvestorConnects";
+import StartupServices from "./StartupServices";
+import Footer from "./Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +17,8 @@ function App() {
       <StartupShowcase />
       <FindCoFounder />
       <InvestorConnects />
+      {/* <StartupServices /> */}
+      <Footer />
     </>
   );
 }
