@@ -1,25 +1,20 @@
-import { useState } from "react";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import Router and Routes
+
 import HomePage from "./HomePage";
-import StartupShowcase from "./StartupShowcase";
-import FindCoFounder from "./FindCoFounder";
-import InvestorConnects from "./InvestorConnects";
-import StartupServices from "./StartupServices";
-import Footer from "./Footer";
+import ProfilePage from "./ProfilePage";
+
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
-      {/* <h1>Startit</h1> */}
-      <HomePage />
-      <StartupShowcase />
-      <FindCoFounder />
-      <InvestorConnects />
-      {/* <StartupServices /> */}
-      <Footer />
-    </>
+    <Router>
+    <Routes>
+      {/* Defining routes for different pages */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+    </Routes>
+    {/* <Footer /> Footer remains visible across all pages */}
+  </Router>
   );
 }
 

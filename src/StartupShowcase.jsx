@@ -33,7 +33,7 @@ const startups = [
 
 const StartupShowcase = () => {
   return (
-    <div className="p-6 bg-blue-50 pb-10">
+    <div className="p-6 bg-blue-50 pb-10 pt-15">
       {/* Header Section */}
       <h1 className="text-3xl font-bold text-center text-blue-900">
         Startup Showcase

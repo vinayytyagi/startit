@@ -80,23 +80,29 @@ const Footer = () => {
 
   return (
     <div className="space-y-8 bg-gray-50">
-      <div className="px-40 pt-4">
-        <h1 className="text-center text-4xl font-bold mb-8">Our Numbers</h1>
-
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {stats.map(({ number, label }, index) => (
-            <div
-              key={index}
-              className="bg-[#e3e6eb] p-6 rounded-lg text-center shadow-md"
-            >
-              <p className="text-3xl font-bold text-green-600 mb-4">{number}</p>
-              <p className="text-blue-900 text-xl font-semibold">{label}</p>
-            </div>
-          ))}
-        </div>
+      {/* Heading Section */}
+      <div className="px-4 sm:px-8 md:px-12 pt-4">
+        <h1 className="text-center text-3xl sm:text-4xl font-bold mb-8">
+          Our Numbers
+        </h1>
       </div>
 
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-4 sm:px-6 md:px-8 mx-auto sm:max-w-7xl">
+        {stats.map(({ number, label }, index) => (
+          <div
+            key={index}
+            className="bg-[#e3e6eb] p-6 rounded-lg text-center shadow-md transform hover:scale-105 transition-all duration-300"
+          >
+            <p className="text-3xl sm:text-4xl font-bold text-green-600 mb-4">
+              {number}
+            </p>
+            <p className="text-blue-900 text-lg sm:text-xl font-semibold">
+              {label}
+            </p>
+          </div>
+        ))}
+      </div>
       {/* Footer */}
       <div className="bg-[#c6e9f9] py-6">
         <div className="flex items-center px-10 mb-6">
@@ -106,20 +112,26 @@ const Footer = () => {
             className="h-14"
           />
         </div>
-        {/* Navigation Buttons */}
-        <div className="mx-10 flex items-center bg-white rounded-full p-2 space-x-6 w-fit border border-gray-300">
+
+        {/* Navigation Buttons for Desktop and Mobile */}
+        <div className="mx-4 sm:mx-10 flex items-center space-x-6 sm:space-x-6 w-fit max-w-screen-lg border border-gray-300 bg-white rounded-full py-2 px-2">
           {footerLinks.map(({ name, icon, active }) => (
             <button
               key={name}
-              className={`flex items-center px-6 py-2 rounded-full transition font-medium text-lg border 
-              ${
-                active
-                  ? "bg-gray-300 border-gray-500"
-                  : "border-transparent hover:bg-gray-100"
-              }`}
+              className={`flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2 rounded-full transition font-medium text-sm sm:text-lg border
+        ${
+          active
+            ? "bg-gray-300 border-gray-500"
+            : "border-transparent hover:bg-gray-100"
+        }`}
             >
+              {/* Icon for all views */}
               <img src={icon} alt={name} className="w-6 h-6 mr-2" />
-              {name}
+
+              {/* Text for larger screens (hidden on mobile) */}
+              <span className="hidden sm:inline text-sm sm:text-lg text-black">
+                {name}
+              </span>
             </button>
           ))}
         </div>
