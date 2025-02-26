@@ -1,6 +1,10 @@
 import React from "react";
 import Header from "./Header";
+import Slider from "react-infinite-logo-slider";
 import Startitimg from "./assets/Startitimg.webp";
+import Mamaearth from "./assets/Mamaearth.png";
+import Unstop from "./assets/Unstop.png";
+import Zomato from "./assets/Zomato.png";
 
 const features = [
   {
@@ -52,38 +56,38 @@ const FirstScreen = () => {
 
       <section className="text-center mt-16 px-4 flex flex-col items-center justify-between">
         {/* <div className=""> */}
-          {/* Title */}
-          <h1 className="text-5xl font-bold text-[#08415c] mb-4">
-            Empower Your{" "}
-            <span
-              className="text-[#27ae60]"
-              style={{ fontFamily: "cursive", fontWeight: 500 }}
-            >
-              Startup Vision
-            </span>
-          </h1>
+        {/* Title */}
+        <h1 className="text-5xl font-bold text-[#08415c] mb-4">
+          Empower Your{" "}
+          <span
+            className="text-[#27ae60]"
+            style={{ fontFamily: "cursive", fontWeight: 500 }}
+          >
+            Startup Vision
+          </span>
+        </h1>
 
-          {/* First line with animated gradient and glow */}
-          <p className="text-2xl font-semibold text-gray-600 mb-6 animate-fade-up transition-all duration-700">
-            <span className="text-[#27ae60] p-1 rounded-lg">
-              Unleash the power of your entrepreneurial spirit!
-            </span>
-          </p>
+        {/* First line with animated gradient and glow */}
+        <p className="text-2xl font-semibold text-gray-600 mb-6 animate-fade-up transition-all duration-700">
+          <span className="text-[#27ae60] p-1 rounded-lg">
+            Unleash the power of your entrepreneurial spirit!
+          </span>
+        </p>
 
-          {/* Second line with smoother text and larger text for readability */}
-          <p className="text-lg sm:text-xl font-light text-gray-700 mb-6 mx-auto max-w-5xl leading-relaxed tracking-wide transform transition-transform duration-300">
-            Validate groundbreaking ideas, discover your ideal co-founder,
-            participate in exciting hackathons and ideathons, pitch your vision
-            directly to investors, and access exclusive funding opportunities to
-            fuel your startup’s growth.
-          </p>
+        {/* Second line with smoother text and larger text for readability */}
+        <p className="text-lg sm:text-xl font-light text-gray-700 mb-6 mx-auto max-w-5xl leading-relaxed tracking-wide transform transition-transform duration-300">
+          Validate groundbreaking ideas, discover your ideal co-founder,
+          participate in exciting hackathons and ideathons, pitch your vision
+          directly to investors, and access exclusive funding opportunities to
+          fuel your startup’s growth.
+        </p>
 
-          {/* Third line with hover effects and background highlight */}
-          <p className="text-3xl italic font-semibold text-gray-700 mb-10 text-center transform hover:text-[#27ae60] transition-all duration-300">
-            <span className="inline-block px-4 py-2 rounded-lg shadow-lg text-shadow-lg bg-[#08415c] text-white hover:bg-[#27ae60] hover:scale-105 transition-all duration-700">
-              "Ideate. Build. Grow."
-            </span>
-          </p>
+        {/* Third line with hover effects and background highlight */}
+        <p className="text-3xl italic font-semibold text-gray-700 mb-10 text-center transform hover:text-[#27ae60] transition-all duration-300">
+          <span className="inline-block px-4 py-2 rounded-lg shadow-lg text-shadow-lg bg-[#08415c] text-white hover:bg-[#27ae60] hover:scale-105 transition-all duration-700">
+            "Ideate. Build. Grow."
+          </span>
+        </p>
         {/* </div> */}
 
         {/* <img src={Startitimg} alt="" /> */}
@@ -126,47 +130,65 @@ const FirstScreen = () => {
         ))}
       </section>
 
-      {/* Horizontal Scrolling Section */}
-      <section className="mt-10">
-        <div className="overflow-hidden flex relative bg-white">
-          <div className="bg-gray-200 z-10 px-10 py-6 text-lg text-black font-bold">
-            Startup <div className="text-green-500">Grow Us</div>
+      {/* Infinite Logo Slider Section */}
+      <section className="mt-12 flex items-center bg-white">
+        <div className="bg-gray-200 text-lg px-4 sm:px-10 py-6 font-bold z-10">
+          <div className="text-black flex flex-col items-center justify-center text-lg font-bold">
+            Startup
+            <span className="text-green-500">Grow Us</span>
           </div>
-          <div className="flex">
-            {/* First set of logos (images) with faster animation */}
-            <span className="flex animate-scroll-fast gap-10 pt-8">
+        </div>
+        <div className="overflow-hidden flex flex-1">
+          <Slider
+            width="200px"
+            duration={20}
+            pauseOnHover={true}
+            blurBorders={false}
+            blurBorderColor={"#000"}
+          >
+            <Slider.Slide>
               <img
-                src="https://vectorseek.com/wp-content/uploads/2023/10/Mamaearth-Logo-Vector.svg-.png"
+                src={Mamaearth}
                 alt="MamaEarth"
-                className="h-8"
+                className="w-42"
               />
+            </Slider.Slide>
+            <Slider.Slide>
               <img
-                src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/png/unstop-logo-500x198.png"
+                src={Unstop}
                 alt="UnStop"
-                className="h-8"
+                className="w-32"
               />
+            </Slider.Slide>
+            <Slider.Slide>
               <img
-                src="https://companieslogo.com/img/orig/ZOMATO.NS_BIG-aa3dfaff.png?t=1660019461"
+                src={Zomato}
                 alt="Zomato"
-                className="h-8"
+                className="w-36"
               />
+            </Slider.Slide>
+            <Slider.Slide>
               <img
-                src="https://vectorseek.com/wp-content/uploads/2023/10/Mamaearth-Logo-Vector.svg-.png"
+                src={Mamaearth}
                 alt="MamaEarth"
-                className="h-8"
+                className="w-42"
               />
+            </Slider.Slide>
+            <Slider.Slide>
               <img
-                src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/branding-guidelines/png/unstop-logo-500x198.png"
+                src={Unstop}
                 alt="UnStop"
-                className="h-8"
+                className="w-32"
               />
+            </Slider.Slide>
+            <Slider.Slide>
               <img
-                src="https://companieslogo.com/img/orig/ZOMATO.NS_BIG-aa3dfaff.png?t=1660019461"
+                src={Zomato}
                 alt="Zomato"
-                className="h-8"
+                className="w-36"
               />
-            </span>
-          </div>
+            </Slider.Slide>
+          </Slider>
         </div>
       </section>
 

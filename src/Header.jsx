@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Registration2 from "./assets/Registration2.png";
+import Timemachine2 from "./assets/Timemachine2.png";
+import Logout from "./assets/Logout.png";
+import Settings from "./assets/Settings.png";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -13,6 +17,28 @@ const Header = () => {
   const toggleNav = () => setIsNavOpen(!isNavOpen);
 
   const navigate = useNavigate(); // Initialize navigate
+
+  const dropdownRef = useRef(null);
+  const avatarRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        avatarRef.current &&
+        !avatarRef.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header>
@@ -64,21 +90,25 @@ const Header = () => {
             src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
             alt="profile-avatar"
             onClick={toggleDropdown}
+            ref={avatarRef}
           />
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute right-8 top-13 bg-[#e6f5fd] shadow-xl rounded-lg w-48 p-2 z-10">
-              <ul className="space-y-2">
+            <div 
+            ref={dropdownRef} // <-- Add this ref here
+            className="absolute right-8 top-13 bg-[#e6f5fd] shadow-xl rounded-lg w-48 px-2 py-2 z-10">
+              <ul className="space-y-1.5">
                 <li>
                   <a
                     href="/"
-                    className="block text-black hover:text-green-500 px-2 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
                     onClick={(e) => {
                       e.preventDefault(); // Prevent default anchor behavior
                       navigate("/profile"); // Navigate to the profile page
                     }}
                   >
+                    <img src={Registration2} className="w-6 mr-2" alt="" />
                     Profile
                   </a>
                 </li>
@@ -86,8 +116,9 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="block text-black hover:text-green-500 px-2 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
                   >
+                    <img src={Timemachine2} className="w-6 mr-2" alt="" />
                     Next Round
                   </a>
                 </li>
@@ -95,8 +126,9 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="block text-black hover:text-green-500 px-2 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
                   >
+                    <img src={Settings} className="w-6 mr-2" alt="" />
                     Settings
                   </a>
                 </li>
@@ -104,8 +136,9 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="block text-black hover:text-green-500 px-2 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
                   >
+                    <img src={Logout} className="w-6 mr-2" alt="" />
                     Logout
                   </a>
                 </li>

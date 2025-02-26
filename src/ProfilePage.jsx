@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { Edit2, Calendar } from "lucide-react";
 import Header from "./Header";
-import { FiPlusCircle } from "react-icons/fi";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -11,36 +10,69 @@ const ProfilePage = () => {
   const [tagline, setTagline] = useState("Enter Your Tagline");
   const [location, setLocation] = useState("Enter Your Location");
   const [bio, setBio] = useState("Enter Your Bio");
+  const [expandedSections, setExpandedSections] = useState({
+    summary: false,
+    experience: false,
+    education: false,
+  });
 
-    // Track which field is being edited
-    const [editField, setEditField] = useState(null);
+  const toggleExpansion = (section) => {
+    setExpandedSections((prevState) => ({
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+  };
 
-    // References to auto-focus input fields
-    const nameRef = useRef(null);
-    const taglineRef = useRef(null);
-    const locationRef = useRef(null);
-    const bioRef = useRef(null);
-  
-    // Function to handle edit icon click
-    const handleEdit = (field) => {
-      setEditField(field);
-      setTimeout(() => {
-        if (field === "name") nameRef.current?.focus();
-        if (field === "tagline") taglineRef.current?.focus();
-        if (field === "location") locationRef.current?.focus();
-        if (field === "bio") bioRef.current?.focus();
-      }, 100);
-    };
+  // Track which field is being edited
+  const [editField, setEditField] = useState(null);
 
-  const tabs = [
-    "About",
-    "Portfolio",
-    "My Round",
-    "Post",
-    "Idea Validation",
-    "Startup Showcase",
-    "Blogs",
-  ];
+  // References to auto-focus input fields
+  const nameRef = useRef(null);
+  const taglineRef = useRef(null);
+  const locationRef = useRef(null);
+  const bioRef = useRef(null);
+
+  // Function to handle edit icon click
+  const handleEdit = (field) => {
+    setEditField(field);
+    setTimeout(() => {
+      if (field === "name") nameRef.current?.focus();
+      if (field === "tagline") taglineRef.current?.focus();
+      if (field === "location") locationRef.current?.focus();
+      if (field === "bio") bioRef.current?.focus();
+    }, 100);
+  };
+
+  // Set user's role in backend part
+  const userRole = "Founder"; // Yeh authentication system se aayega
+
+  const roleTabs = {
+    Founder: [
+      "About",
+      "Portfolio",
+      "My Round",
+      "Post",
+      "Idea Validation",
+      "Startup Showcase",
+      "Blogs",
+    ],
+    Investor: [
+      "About",
+      "Portfolio",
+      "Post",
+      "Blogs",
+      "Terms & Conditions",
+    ],
+    University: [
+      "About",
+      "Portfolio",
+      "Post",
+      "Blogs",
+      "Privacy Policy",
+    ],
+  };
+
+  const tabs = roleTabs[userRole] || []; // Get tabs based on the role
 
   const aboutData = [
     {
@@ -49,22 +81,22 @@ const ProfilePage = () => {
         "I hope this message finds you well. My name is Rohan Kapoor, and I manage a digital marketing company. I am reaching out to express my interest in acquiring PDFEdit.pro, a platform I admire for its simplicity and functionality in PDF editing and manipulation.",
     },
     {
-      title: "Experience",
+      title: "Education",
       content:
-        "I hope this message finds you well. My name is Rohan Kapoor, and I manage a digital marketing company. I am reaching out to express my interest in acquiring PDFEdit.pro.",
+        "I have done my BTech and currently persuing my MTech in Computer Science and Engineering. I am reaching out to express my interest in acquiring PDFEdit.pro. The platform has provided many opportunities for the company to expand into different verticals and improve operational efficiency.",
     },
     {
       title: "Experience",
       content:
-        "I hope this message finds you well. My name is Rohan Kapoor, and I manage a digital marketing company. I am reaching out to express my interest in acquiring PDFEdit.pro.",
+        "With over 10 years of experience in various sectors of digital marketing and project management, I have managed high-performing teams to optimize digital strategies across multiple platforms. The main focus has been in the areas of SEO, paid campaigns, and strategic partnerships.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-[#edf3fc] pb-10">
       <Header />
- {/* Profile Card */}
- <div className="max-w-xl mx-auto mt-8 bg-white shadow-md rounded-lg p-6 border border-gray-200">
+      {/* Profile Card */}
+      <div className="max-w-xl mx-auto mt-8 bg-white shadow-md rounded-lg p-6 border border-gray-200">
         <div className="flex flex-col md:flex-row items-center md:items-start space-x-0 md:space-x-6">
           {/* Profile Image */}
           <img
@@ -108,7 +140,9 @@ const ProfilePage = () => {
                   className="border-b border-gray-400 outline-none flex-1 px-2"
                 />
               ) : (
-                <span className="border-b border-gray-400 flex-1">{tagline}</span>
+                <span className="border-b border-gray-400 flex-1">
+                  {tagline}
+                </span>
               )}
               <Edit2
                 className="w-4 h-4 text-green-600 cursor-pointer ml-2"
@@ -129,7 +163,9 @@ const ProfilePage = () => {
                   className="border-b border-gray-400 outline-none flex-1 px-2"
                 />
               ) : (
-                <span className="border-b border-gray-400 flex-1">{location}</span>
+                <span className="border-b border-gray-400 flex-1">
+                  {location}
+                </span>
               )}
               <Edit2
                 className="w-4 h-4 text-green-600 cursor-pointer ml-2"
@@ -140,31 +176,32 @@ const ProfilePage = () => {
             {/* Social Media Icons & Joined Date */}
             <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 mt-4">
               <div className="flex space-x-3">
-                {["LinkedIn", "Facebook", "Instagram", "X"].map((platform, index) => (
-                  <img
-                    key={index}
-                    src={`https://upload.wikimedia.org/wikipedia/commons/${
-                      platform === "X"
-                        ? "5/53/X_logo_2023_original.svg"
-                        : platform === "Instagram"
-                        ? "a/a5/Instagram_icon.png"
-                        : platform === "Facebook"
-                        ? "1/1b/Facebook_icon.svg"
-                        : "c/ca/LinkedIn_logo_initials.png"
-                    }`}
-                    alt={platform}
-                    className="w-6 h-6 cursor-pointer"
-                  />
-                ))}
-                <span className="w-6 h-6 flex items-center justify-center text-2xl cursor-pointer">
-                  <FiPlusCircle />
-                </span>
+                {["LinkedIn", "Facebook", "Instagram", "X"].map(
+                  (platform, index) => (
+                    <img
+                      key={index}
+                      src={`https://upload.wikimedia.org/wikipedia/commons/${
+                        platform === "X"
+                          ? "5/53/X_logo_2023_original.svg"
+                          : platform === "Instagram"
+                          ? "a/a5/Instagram_icon.png"
+                          : platform === "Facebook"
+                          ? "1/1b/Facebook_icon.svg"
+                          : "c/ca/LinkedIn_logo_initials.png"
+                      }`}
+                      alt={platform}
+                      className="w-6 h-6 cursor-pointer"
+                    />
+                  )
+                )}
               </div>
 
               {/* Joined Date */}
               <div className="flex items-center">
                 <Calendar className="w-5 h-5 text-gray-600" />
-                <span className="ml-2 text-gray-700 font-medium">Joined Feb 2024</span>
+                <span className="ml-2 text-gray-700 font-medium">
+                  Joined Feb 2024
+                </span>
               </div>
             </div>
           </div>
@@ -217,18 +254,35 @@ const ProfilePage = () => {
       <div className="max-w-5xl mx-auto mt-6 bg-white shadow-md rounded-lg p-6">
         {activeTab === 0 && (
           <div className="space-y-4">
-            {aboutData.map((item, index) => (
-              <div key={index} className="border-b last:border-none pb-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-bold">{item.title}</h3>
-                  <Edit2 className="w-5 h-5 text-gray-500 cursor-pointer" />
+            {aboutData.map((item, index) => {
+              // Check if the section is expanded or not
+              const isExpanded = expandedSections[item.title.toLowerCase()];
+              const truncatedContent = item.content.slice(0, 262) + "..."; // Truncate after 250 characters
+
+              return (
+                <div key={index} className="border-b last:border-none pb-4">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-bold">{item.title}</h3>
+                    <Edit2 className="w-5 h-5 text-gray-500 cursor-pointer" />
+                  </div>
+                  <p className="text-gray-600 mt-2 ml-4">
+                    {isExpanded ? item.content : truncatedContent}
+                  </p>
+
+                  {/* Show More/Show Less toggle directly after the content */}
+                  <a
+                    href="#"
+                    className="text-green-600 ml-4 font-medium text-sm"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleExpansion(item.title.toLowerCase());
+                    }}
+                  >
+                    {isExpanded ? "Show Less" : ". . . Show More"}
+                  </a>
                 </div>
-                <p className="text-gray-600 mt-2">{item.content}</p>
-                <a href="#" className="text-green-600 font-medium text-sm mt-2 block">
-                  ...Show More
-                </a>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
