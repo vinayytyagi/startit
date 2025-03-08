@@ -1,10 +1,11 @@
 import React from "react";
 import Header from "./Header";
 import Slider from "react-infinite-logo-slider";
-import Startitimg from "./assets/Startitimg.webp";
+// import Startitimg from "./assets/Startitimg.webp";
 import Mamaearth from "./assets/Mamaearth.png";
 import Unstop from "./assets/Unstop.png";
 import Zomato from "./assets/Zomato.png";
+// import Cursor from "./assets/Cursor.png";
 
 const features = [
   {
@@ -88,6 +89,7 @@ const FirstScreen = () => {
             "Ideate. Build. Grow."
           </span>
         </p>
+        {/* <a href="#section1">Link to Footer</a> */}
         {/* </div> */}
 
         {/* <img src={Startitimg} alt="" /> */}
@@ -147,46 +149,22 @@ const FirstScreen = () => {
             blurBorderColor={"#000"}
           >
             <Slider.Slide>
-              <img
-                src={Mamaearth}
-                alt="MamaEarth"
-                className="w-42"
-              />
+              <img src={Mamaearth} alt="MamaEarth" className="w-42" />
             </Slider.Slide>
             <Slider.Slide>
-              <img
-                src={Unstop}
-                alt="UnStop"
-                className="w-32"
-              />
+              <img src={Unstop} alt="UnStop" className="w-32" />
             </Slider.Slide>
             <Slider.Slide>
-              <img
-                src={Zomato}
-                alt="Zomato"
-                className="w-36"
-              />
+              <img src={Zomato} alt="Zomato" className="w-36" />
             </Slider.Slide>
             <Slider.Slide>
-              <img
-                src={Mamaearth}
-                alt="MamaEarth"
-                className="w-42"
-              />
+              <img src={Mamaearth} alt="MamaEarth" className="w-42" />
             </Slider.Slide>
             <Slider.Slide>
-              <img
-                src={Unstop}
-                alt="UnStop"
-                className="w-32"
-              />
+              <img src={Unstop} alt="UnStop" className="w-32" />
             </Slider.Slide>
             <Slider.Slide>
-              <img
-                src={Zomato}
-                alt="Zomato"
-                className="w-36"
-              />
+              <img src={Zomato} alt="Zomato" className="w-36" />
             </Slider.Slide>
           </Slider>
         </div>
@@ -207,6 +185,10 @@ const FirstScreen = () => {
           animation: scroll-fast 30s linear infinite;
         }
       `}</style>
+
+      {/* <div id="section1" className="flex items-center justify-center py-10">
+        Footer
+      </div> */}
     </div>
   );
 };

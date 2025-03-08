@@ -2,6 +2,25 @@ import { useState, useRef } from "react";
 import { Edit2, Calendar } from "lucide-react";
 import Header from "./Header";
 
+// portfolio images
+import Website from "./assets/Website.png";
+import Figma from "./assets/Figma.png";
+import YouTube from "./assets/YouTube.png";
+import GitHub from "./assets/GitHub.png";
+import Dribbble from "./assets/Dribbble.png";
+import Behance from "./assets/Behance.png";
+import Notion from "./assets/Notion.png";
+import Medium from "./assets/Medium.png";
+
+// My Round images
+import Mahakumbh from "./assets/Mahakumbh.png";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// Post Card
+import PostCard from "./components/ProfileTabs/PostCard";
+
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -56,20 +75,8 @@ const ProfilePage = () => {
       "Startup Showcase",
       "Blogs",
     ],
-    Investor: [
-      "About",
-      "Portfolio",
-      "Post",
-      "Blogs",
-      "Terms & Conditions",
-    ],
-    University: [
-      "About",
-      "Portfolio",
-      "Post",
-      "Blogs",
-      "Privacy Policy",
-    ],
+    Investor: ["About", "Portfolio", "Post", "Blogs", "Terms & Conditions"],
+    University: ["About", "Portfolio", "Post", "Blogs", "Privacy Policy"],
   };
 
   const tabs = roleTabs[userRole] || []; // Get tabs based on the role
@@ -91,6 +98,108 @@ const ProfilePage = () => {
         "With over 10 years of experience in various sectors of digital marketing and project management, I have managed high-performing teams to optimize digital strategies across multiple platforms. The main focus has been in the areas of SEO, paid campaigns, and strategic partnerships.",
     },
   ];
+
+  const portfolioData = [
+    {
+      title: "Custom",
+      icon: Website,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Figma",
+      icon: Figma,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Youtube",
+      icon: YouTube,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Github",
+      icon: GitHub,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Dribble",
+      icon: Dribbble,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Behance",
+      icon: Behance,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Notion",
+      icon: Notion,
+      link: "https://www.pdfedit.pro",
+    },
+    {
+      title: "Medium",
+      icon: Medium,
+      link: "https://www.pdfedit.pro",
+    },
+  ];
+
+  const events = [
+      {
+        image: Mahakumbh,
+        title: "Startup Mahakumbh 2025",
+        description:
+          "The Department for Promotion of Industry and Internal Trade",
+      },
+      {
+        image: Mahakumbh,
+        title: "Startup Mahakumbh 2025",
+        description:
+          "The Department for Promotion of Industry and Internal Trade",
+      },
+      {
+        image: Mahakumbh,
+        title: "Startup Mahakumbh 2025",
+        description:
+          "The Department for Promotion of Industry and Internal Trade",
+      },
+      {
+        image: Mahakumbh,
+        title: "Startup Mahakumbh 2025",
+        description:
+          "The Department for Promotion of Industry and Internal Trade",
+      },
+    ];
+  
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2, // Adjusted for spacing between cards
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: false, // Removed side arrows
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 980,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+      ],
+    };
+  
 
   return (
     <div className="min-h-screen bg-[#edf3fc] pb-10">
@@ -232,12 +341,15 @@ const ProfilePage = () => {
       </div>
 
       {/* Tabs */}
-      <div className="w-full mx-auto bg-white mt-4">
-        <div className="flex justify-center flex-wrap space-x-4 md:space-x-10">
+      <div className="w-full mx-auto bg-white mt-6">
+        <div
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex items-center lg:justify-center flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-h space-x-4 md:space-x-10 px-6"
+        >
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className={`cursor-pointer p-3 transition-all ${
+              className={`cursor-pointer text-nowrap p-3 transition-all ${
                 activeTab === index
                   ? "font-bold text-xl text-[#27ae60] border-b-4 border-[#27ae60]"
                   : "font-bold text-xl text-[#08415c]"
@@ -286,7 +398,72 @@ const ProfilePage = () => {
           </div>
         )}
 
-        {activeTab !== 0 && <div>{tabs[activeTab]}</div>}
+        {/* {activeTab !== 0 && <div>{tabs[activeTab]}</div>} */}
+
+        {/* TabPortfolio */}
+        {/* TabPortfolio */}
+        {activeTab == 1 && (
+          <div>
+            <div className="text-center text-2xl font-semibold text-[#08415c]">
+              Connect your other{" "}
+              <span className="text-[#27ae60]">Work Profile</span> showcase your
+              <span className="text-[#ff6f00]"> work</span>
+            </div>
+            <div className="pt-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {portfolioData.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col justify-center items-center border rounded-lg cursor-pointer p-4"
+                      onClick={() => window.open(item.link, "_blank")}
+                    >
+                      <img src={item.icon} className="w-12" />
+                      <h3 className="text-sm text-center font-medium">
+                        {item.title}
+                      </h3>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+        {/* TabPortfolio */}
+        {activeTab == 2 && <div>
+          <Slider {...settings}>
+            {events.map(({ image, title, description }, index) => (
+              <div key={index} className="px-3">
+                <div className="bg-white border rounded-xl p-2 text-center flex">
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-20 h-auto rounded-lg"
+                  />
+                  <div>
+                    <h3 className="mt-3 text-lg font-semibold text-gray-900">
+                      {title}
+                    </h3>
+                    <p className="text-gray-600">{description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
+       
+          
+          </div>}
+        {/* TabPortfolio */}
+        {activeTab == 3 && <div>
+          
+          <PostCard />
+          </div>}
+        {/* TabPortfolio */}
+        {activeTab == 4 && <div>{tabs[activeTab]}</div>}
+        {/* TabPortfolio */}
+        {activeTab == 5 && <div>{tabs[activeTab]}</div>}
+        {/* TabPortfolio */}
+        {activeTab == 6 && <div>{tabs[activeTab]}</div>}
       </div>
     </div>
   );
