@@ -21,6 +21,12 @@ import "slick-carousel/slick/slick-theme.css";
 // Post Card
 import PostCard from "./components/ProfileTabs/PostCard";
 
+// startup showcase
+import TabStartupShowcase from "./TabStartupShowcase";
+
+// blogs
+import TabBlogs from "./TabBlogs";
+
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -459,11 +465,17 @@ const ProfilePage = () => {
           <PostCard />
           </div>}
         {/* TabPortfolio */}
-        {activeTab == 4 && <div>{tabs[activeTab]}</div>}
+        {activeTab == 4 && <div>
+          <PostCard />
+          </div>}
         {/* TabPortfolio */}
-        {activeTab == 5 && <div>{tabs[activeTab]}</div>}
+        {activeTab == 5 && <div>
+          <TabStartupShowcase />
+          </div>}
         {/* TabPortfolio */}
-        {activeTab == 6 && <div>{tabs[activeTab]}</div>}
+        {activeTab == 6 && <div>
+          <TabBlogs />
+          </div>}
       </div>
     </div>
   );
