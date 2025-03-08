@@ -87,7 +87,7 @@ const Header = () => {
           {/* Profile Avatar */}
           <img
             className="h-10 mx-10 rounded-full cursor-pointer"
-            src="https://www.pngrepo.com/png/384670/512/account-avatar-profile-user.png"
+            src="https://cdn-icons-png.flaticon.com/256/2726/2726000.png"
             alt="profile-avatar"
             onClick={toggleDropdown}
             ref={avatarRef}
