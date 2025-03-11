@@ -53,7 +53,7 @@ const EditProfileModal = ({ isOpen, closeModal, saveProfile, profile }) => {
     <div className="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 bg-opacity-50 flex justify-center items-center z-50">
       <div
         className="bg-white p-6 rounded-lg w-full max-w-xs sm:max-w-sm shadow-xl overflow-y-auto"
-        style={{ maxHeight: "80vh" }}
+        style={{ maxHeight: "80vh", maxWidth: "60vh" }}
       >
         <h3 className="text-xl font-semibold mb-4">Edit Profile</h3> {/* Edit Profile */}
 
