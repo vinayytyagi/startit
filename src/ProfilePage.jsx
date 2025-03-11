@@ -55,7 +55,7 @@ const EditProfileModal = ({ isOpen, closeModal, saveProfile, profile }) => {
         className="bg-white p-6 rounded-lg w-full max-w-md shadow-xl overflow-y-auto"
         style={{ maxHeight: "80vh" }}
       >
-        <h3 className="text-xl font-semibold mb-4">Edit Profile</h3>
+        <h3 className="text-xl font-semibold mb-4">Edit Pro</h3> {/* Edit Profile */}
 
         {/* Name Input */}
         <label className="block text-gray-700">Name</label>
