@@ -5,6 +5,7 @@ import Registration2 from "./assets/Registration2.png";
 import Timemachine2 from "./assets/Timemachine2.png";
 import Logout from "./assets/Logout.png";
 import Settings from "./assets/Settings.png";
+import SlogoBlack from "./assets/s-logo-black.png";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -42,14 +43,18 @@ const Header = () => {
 
   return (
     <header>
-      <div className="flex justify-between shadow bg-white text-white py-3 px-6">
-        {/* Logo */}
-        <img
-          className="h-10 cursor-pointer"
-          src="https://aperobotics.files.wordpress.com/2014/11/startit-logo-raster.png"
-          alt="logo"
-          onClick={() => navigate("/")} // Navigate to the home page
-        />
+      <div className="flex justify-between shadow bg-white text-white py-3 px-2">
+        <div className="flex items-center gap-4">
+          {/* Logo */}
+          <img
+            className="h-10 cursor-pointer ml-8"
+            src={SlogoBlack}
+            // src="https://aperobotics.files.wordpress.com/2014/11/startit-logo-raster.png"
+            alt="logo"
+            onClick={() => navigate("/")} // Navigate to the home page
+          />
+          <div className="text-black text-2xl font-bold">Startit</div>
+        </div>
         <div className="flex items-center gap-4">
           {/* Hamburger menu for mobile */}
           <button
@@ -95,14 +100,15 @@ const Header = () => {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div 
-            ref={dropdownRef} // <-- Add this ref here
-            className="absolute right-8 top-13 bg-[#e6f5fd] shadow-xl rounded-lg w-44 px-2 py-2 z-10">
+            <div
+              ref={dropdownRef} // <-- Add this ref here
+              className="absolute right-8 top-13 bg-[#e6f5fd] shadow-xl rounded-lg w-44 px-2 py-2 z-10"
+            >
               <ul className="space-y-1.5">
                 <li>
                   <a
                     href="/"
-                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dd55] p-1 rounded"
                     onClick={(e) => {
                       e.preventDefault(); // Prevent default anchor behavior
                       navigate("/profile"); // Navigate to the profile page
@@ -116,7 +122,7 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dd55] p-1 rounded"
                   >
                     <img src={Timemachine2} className="w-6 mr-2" alt="" />
                     Next Round
@@ -126,7 +132,7 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dd55] p-1 rounded"
                   >
                     <img src={Settings} className="w-6 mr-2" alt="" />
                     Settings
@@ -136,7 +142,7 @@ const Header = () => {
                 <li>
                   <a
                     href="/"
-                    className="flex justify-start items-center text-black hover:bg-[#c3d4dda4] p-1 rounded"
+                    className="flex justify-start items-center text-black hover:bg-[#c3d4dd55] p-1 rounded"
                   >
                     <img src={Logout} className="w-6 mr-2" alt="" />
                     Logout
