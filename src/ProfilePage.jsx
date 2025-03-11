@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Edit2, Calendar, Trash } from "lucide-react";  // Import Trash icon
+import { Edit2, Calendar, Trash } from "lucide-react"; // Import Trash icon
 import Header from "./Header";
 import ProfileTabSection from "./ProfileTabSection";
 
@@ -51,9 +51,12 @@ const EditProfileModal = ({ isOpen, closeModal, saveProfile, profile }) => {
   return (
     // Modal for editing
     <div className="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg w-full max-w-md shadow-xl overflow-y-auto" style={{ maxHeight: '80vh' }}>
+      <div
+        className="bg-white p-6 rounded-lg w-full max-w-md shadow-xl overflow-y-auto"
+        style={{ maxHeight: "80vh" }}
+      >
         <h3 className="text-xl font-semibold mb-4">Edit Profile</h3>
-        
+
         {/* Name Input */}
         <label className="block text-gray-700">Name</label>
         <div className="relative mb-4">
@@ -137,7 +140,9 @@ const EditProfileModal = ({ isOpen, closeModal, saveProfile, profile }) => {
               <input
                 type="url"
                 value={socialLinks[platform] || ""}
-                onChange={(e) => handleSocialLinkChange(platform, e.target.value)}
+                onChange={(e) =>
+                  handleSocialLinkChange(platform, e.target.value)
+                }
                 className="border border-gray-300 p-2 w-full pr-10"
               />
               {socialLinks[platform] && (
@@ -153,10 +158,16 @@ const EditProfileModal = ({ isOpen, closeModal, saveProfile, profile }) => {
         ))}
 
         <div className="flex justify-end space-x-4">
-          <button onClick={closeModal} className="px-4 py-2 bg-gray-300 rounded-md cursor-pointer">
+          <button
+            onClick={closeModal}
+            className="px-4 py-2 bg-gray-300 rounded-md cursor-pointer"
+          >
             Cancel
           </button>
-          <button onClick={handleSave} className="px-4 py-2 bg-green-600 text-white rounded-md cursor-pointer">
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 bg-green-600 text-white rounded-md cursor-pointer"
+          >
             Save
           </button>
         </div>
@@ -201,7 +212,9 @@ const ProfilePage = () => {
       <img
         src={`https://upload.wikimedia.org/wikipedia/commons/${iconUrls[platform]}`}
         alt={platform}
-        className={`w-6 h-6 cursor-pointer ${profile.socialLinks[platform] ? "text-blue-600" : "grayscale"}`}
+        className={`w-6 h-6 cursor-pointer ${
+          profile.socialLinks[platform] ? "text-blue-600" : "grayscale"
+        }`}
       />
     );
   };
@@ -231,40 +244,54 @@ const ProfilePage = () => {
           <div className="flex-1 w-full mt-4 md:mt-0">
             {/* Name Section */}
             <div className="flex items-center space-x-2">
-              <span className="text-lg font-bold text-blue-900">{profile.name}</span>
+              <span className="text-lg font-bold text-blue-900">
+                {profile.name}
+              </span>
             </div>
 
             {/* Tagline Section */}
             <div className="flex items-center mt-2">
               <span className="text-gray-700 font-medium w-24">Tagline:</span>
-              <span className="border-b border-gray-400 flex-1">{profile.tagline}</span>
+              <span className="border-b border-gray-400 flex-1">
+                {profile.tagline}
+              </span>
             </div>
 
             {/* Location Section */}
             <div className="flex items-center mt-2">
               <span className="text-gray-700 font-medium w-24">Location:</span>
-              <span className="border-b border-gray-400 flex-1">{profile.location}</span>
+              <span className="border-b border-gray-400 flex-1">
+                {profile.location}
+              </span>
             </div>
 
-            {/* Social Media Icons */}
-            <div className="flex space-x-3 mt-4">
-              {["LinkedIn", "Facebook", "Instagram", "X"].map((platform) => (
-                <a
-                  key={platform}
-                  href={profile.socialLinks[platform] || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={profile.socialLinks[platform] ? "text-blue-600" : "text-gray-400"}
-                >
-                  {renderSocialMediaIcon(platform)}
-                </a>
-              ))}
-            </div>
+            <div className="flex items-center justify-between mt-4">
+              {/* Social Media Icons */}
+              <div className="flex items-center space-x-3">
+                {["LinkedIn", "Facebook", "Instagram", "X"].map((platform) => (
+                  <a
+                    key={platform}
+                    href={profile.socialLinks[platform] || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={
+                      profile.socialLinks[platform]
+                        ? "text-blue-600"
+                        : "text-gray-400"
+                    }
+                  >
+                    {renderSocialMediaIcon(platform)}
+                  </a>
+                ))}
+              </div>
 
-            {/* Joined Date */}
-            <div className="flex items-center mt-4">
-              <Calendar className="w-5 h-5 text-gray-600" />
-              <span className="ml-2 text-gray-700 font-medium">Joined Feb 202</span>
+              {/* Joined Date */}
+              <div className="flex items-center">
+                <Calendar className="w-5 h-5 text-gray-600" />
+                <span className="ml-2 text-gray-700 font-medium">
+                  Joined Feb 2024
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -273,7 +300,9 @@ const ProfilePage = () => {
         <div className="mt-4">
           <div className="flex items-center">
             <span className="text-gray-700 font-medium w-24">Bio:</span>
-            <span className="border-b border-gray-400 flex-1">{profile.bio}</span>
+            <span className="border-b border-gray-400 flex-1">
+              {profile.bio}
+            </span>
           </div>
         </div>
       </div>
