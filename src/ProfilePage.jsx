@@ -264,7 +264,7 @@ const ProfilePage = () => {
             {/* Joined Date */}
             <div className="flex items-center mt-4">
               <Calendar className="w-5 h-5 text-gray-600" />
-              <span className="ml-2 text-gray-700 font-medium">Joined Feb 2024</span>
+              <span className="ml-2 text-gray-700 font-medium">Joined Feb 202</span>
             </div>
           </div>
         </div>
