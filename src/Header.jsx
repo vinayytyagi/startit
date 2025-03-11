@@ -44,14 +44,15 @@ const Header = () => {
   return (
     <header>
       <div className="flex justify-between shadow bg-white text-white py-3 px-2">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 cursor-pointer" 
+          onClick={() => navigate("/")} // Navigate to the home page
+        >
           {/* Logo */}
           <img
-            className="h-10 cursor-pointer ml-8"
+            className="h-10 ml-8"
             src={SlogoBlack}
             // src="https://aperobotics.files.wordpress.com/2014/11/startit-logo-raster.png"
             alt="logo"
-            onClick={() => navigate("/")} // Navigate to the home page
           />
           <div className="text-black text-2xl font-bold">Startit</div>
         </div>
