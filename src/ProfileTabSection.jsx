@@ -231,7 +231,7 @@ function ProfileTabSection() {
           <div className="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 bg-opacity-50 flex justify-center items-center z-50">
             <div
               className="bg-white p-6 rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md shadow-xl overflow-y-auto"
-              style={{ maxHeight: "100vh" }}
+              style={{ maxHeight: "90vh" }}
             > 
               <h3 className="text-xl font-semibold">Edit Sections</h3>
               {/* Summary Section */}
